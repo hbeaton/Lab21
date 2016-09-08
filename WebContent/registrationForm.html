@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	//validateForm
+  function validateForm(){
+    //return validateEmail && validatePassword
+    return validateEmail() && validatePassword();
+  }
+  	
+  
+	//validateEmail--true if valid, false otherwise
+  function validateEmail()
+  {
+    var email= document.logon.email.value;
+  	//isn't null & isn't empty
+    if (email === null || email ===""){
+      return false; 
+    }
+  	//trim()
+    //has an @ not in first space
+  	//has a . at least 3rd char from end
+  	//has . after the at
+    return true;
+  }
+  
+  //validatePassword--true if valid, false otherwise
+  function validatePassword()
+  {
+     var password1 = document.logon.password1.value;
+     var password2 = document.logon.password2.value;
+    if (password1 === null || password1.length< 8)  {
+      alert ("Password must be 8 characters");
+      return false;
+      }
+    
+    
+    if(password1.toLowerCase() === password1) {
+      alert("Password must contain at least one uppercase letter");
+      return false;
+    }
+    
+    if(password1 !== password2) {
+      alert ("Passwords must match!");
+      return false;
+    }
+     //has at least 8 char
+  	//has at least 1 uppercase
+  	//two passwords match 
+  return true;
+      }
+  
+</script>
+</head>
+<body>
+<h1>Welcome to Grant Chirpus' Registration Page</h1>
+<form name="logon" action="RegistrationForm.jsp" method="post">
+	First Name<input type="text" name="firstname"><br>
+	Last Name<input type="text" name="lastname"><br>
+	MI<input type="text" name="middleInitial"><br>
+	18-30<input type="radio" name="age" value="18-30"><br>
+	31-45<input type="radio" name="age" value="31-45"><br>
+	46-65<input type="radio" name="age" value="46-65"><br>
+	66-100<input type="radio" name="age" value="66-100"><br>
+	<br>
+	Male<input type="radio" name="gender" value="male"> <br>
+  	Female<input type="radio" name="gender" value="female"> <br>
+  	Other<input type="radio" name="gender" value="other"> <br>
+  	<br>
+	Class<select name="class">
+	<option value=" "></option>
+  	<option value="Java">Java</option>
+  	<option value="Front-end">Front-end</option>
+  	<option value=".Net">.Net</option>
+  	<option value="Part time Front-end">Part time Front-end</option>
+	</select><br>
+
+	
+	Email<input type="text" name="email"><br>
+	
+	Username:<input type="text" name="username"><br>
+	
+  <label>Password:<input type="password" name="password1"></label><br>
+	
+  <label>Retype Password<input type="password" name="password2"></label><br>
+	
+	
+	<button type="submit" onclick="return validatePassword()">Submit</button>
+</form>
+</body>
+</html>
